@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const { createCanvas } = require("canvas");
+
+const path = require('path');
+const dir = path.join(__dirname, 'build');
+
 const port = 3000;
 
+app.use(express.static(dir));
 
 app.get('/:size/:bg', (req, res) => {
     const { 0: width, 1: height } = req.params.size.split('x');
@@ -19,6 +24,9 @@ app.get('/:size/:bg', (req, res) => {
     const headers = { "Content-Type": "image/png" };
     res.writeHead(200, headers);
     res.end(buffer);
-})
+});
+app.get('/', (req, res) =>{
+    res.sendFile(path.join(dir, 'index.html'));
+});
 
 app.listen(port, () => console.log(`Puerto: ${port}`));
