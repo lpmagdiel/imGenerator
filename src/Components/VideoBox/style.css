@@ -1,0 +1,15 @@
+.video-box {
+    min-height: 150px;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.video-box-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #000;
+    gap: 10px;
+}

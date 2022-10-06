@@ -1,31 +1,33 @@
 const express = require('express');
 const app = express();
-const { createCanvas } = require("canvas");
+const { CreateBufferImg, CreateBufferVideo } = require('./Creator.js');
 
 const path = require('path');
 const dir = path.join(__dirname, 'build');
 
-const port = 3000;
+const port = process.env.PORT || 3001;
+
 
 app.use(express.static(dir));
 
-app.get('/:size/:bg', (req, res) => {
+
+app.get('/image/:size/:bg', (req, res) => {
     const { 0: width, 1: height } = req.params.size.split('x');
-    const canvas = createCanvas(Number(width), Number(height));
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#' + req.params.bg;
-    ctx.fillRect(0, 0, width, height);
-    const fontSize = (width < height) ? (width / 8) : (height / 8);
-    ctx.font = `${fontSize}px Arial`;
-    ctx.textAlign = "center";
-    ctx.fillStyle = "white";
-    ctx.fillText(req.params.size, width / 2, (height / 2) + (fontSize / 2));
-    const buffer = canvas.toBuffer();
+    const buffer = CreateBufferImg(Number(width), Number(height), `#${req.params.bg}`);
     const headers = { "Content-Type": "image/png" };
     res.writeHead(200, headers);
     res.end(buffer);
 });
-app.get('/', (req, res) =>{
+
+app.get('/video/:quality', (req, res) => {
+    console.log( req.params );
+    const buffer = CreateBufferVideo(req.params.quality);
+    const headers = { "Content-Type": "image/png" };
+    res.writeHead(200, headers);
+    res.end(buffer);
+});
+
+app.get('/*', (req, res) => {
     res.sendFile(path.join(dir, 'index.html'));
 });
 
