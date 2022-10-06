@@ -1,4 +1,5 @@
-const { createCanvas } = require("canvas");
+const { registerFont, createCanvas } = require("canvas");
+registerFont('IBMPlexMono-Bold.ttf', { family: 'IBMPlexMono' })
 
 /**
  * 
@@ -53,7 +54,7 @@ function CreateBufferImg(width, height, background) {
     ctx.fillStyle = background;
     ctx.fillRect(0, 0, width, height);
     const fontSize = (width < height) ? (width / 8) : (height / 8);
-    ctx.font = `${fontSize}px Arial`;
+    ctx.font = `${fontSize}px "IBMPlexMono"`;
     ctx.textAlign = "center";
     ctx.fillStyle = "white";
     ctx.fillText(`${width}X${height}`, width / 2, (height / 2) + (fontSize / 2));
