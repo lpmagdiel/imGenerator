@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/static/media/IBMPlexMono-Regular.ad8e1092.ttf"
   },
   {
-    "revision": "46ad596b0e9327ad927bfe49c7759a98",
+    "revision": "1eba5f6276ff20303717fe47c4bfdf09",
     "url": "/index.html"
   }
 ];
