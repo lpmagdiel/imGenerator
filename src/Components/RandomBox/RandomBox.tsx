@@ -4,31 +4,31 @@ export interface RandomBoxInterface {
 	bg?: string;
 }
 
-export const RandomBox : React.FC<RandomBoxInterface> = ({ bg = 'transparent' }) => {
+export const RandomBox: React.FC<RandomBoxInterface> = ({ bg = 'transparent' }) => {
 	const [url, setUrl] = useState(`${window.location.origin}/random/medium`);
 	const marks = [
 		{
-		  value: 1,
-		  label: 'Pequeño',
+			value: 1,
+			label: 'Pequeño',
 		},
 		{
-		  value: 2,
-		  label: 'Mediano',
+			value: 2,
+			label: 'Mediano',
 		},
 		{
-		  value: 3,
-		  label: 'Grande',
+			value: 3,
+			label: 'Grande',
 		},
-	  ];
+	];
 
-	  const handleChange = (event: Event, newValue: number | number[]) => {
+	const handleChange = (event: Event, newValue: number | number[]) => {
 		const quality = newValue === 1 ? 'small' : newValue === 2 ? 'medium' : 'large';
 		setUrl(`${window.location.origin}/random/${quality}`);
-	  };
+	};
 
 	return (
 		<div className="video-box" style={{ backgroundColor: bg }}>
-			<div className="video-box-row p-20">
+			<div className="video-box-row p-20 w-100">
 				<Slider
 					aria-label="image size"
 					track={false}
@@ -42,8 +42,9 @@ export const RandomBox : React.FC<RandomBoxInterface> = ({ bg = 'transparent' })
 					onChange={handleChange}
 				/>
 			</div>
+			<div className="min-space"></div>
 			<div className="video-box-row">
-			<a href={url} target="_blank">{url}</a>
+				<a href={url} target="_blank">Abrir imagen</a>
 			</div>
 		</div>
 	);

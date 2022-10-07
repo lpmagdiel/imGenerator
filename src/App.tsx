@@ -27,6 +27,7 @@ function App() {
           </div>
         </div>
       </div>
+      <div className="min-space-visible-mobile"></div>
       <div className="d-grid col-auto">
         <ContentBox title={'Imagen'} color="#cb4335" icon="🌅">
           <div className="w-100 center">

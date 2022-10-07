@@ -100,6 +100,10 @@ nav img{
   width: 100%;
   height: 100px;
 }
+.min-space{
+  width: 100%;
+  height: 50px;
+}
 .grid1{
   display: grid;
   grid-template-columns: 1fr;
@@ -127,7 +131,9 @@ nav img{
 .w-50{
   width: 50%;
 }
-
+.w-100{
+  width: 100%;
+}
 .d-grid{
   display:grid;
   gap:10px;
@@ -150,7 +156,11 @@ nav img{
   .d-grid{
     gap: 60px;
   }
+  .min-space-visible-mobile{
+    height: 50px;
+    width: 100%;
+  }
   .col-auto{
-    grid-template-columns: repeat(auto-fit,minmax(200px,auto));
+    grid-template-columns: repeat(auto-fit,minmax(300px,auto));
   }
 }
