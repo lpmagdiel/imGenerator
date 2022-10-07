@@ -1,8 +1,9 @@
 .image-box {
     min-height: 150px;
+    min-width: 50%;
     display: grid;
     grid-template-columns: 1fr;
-    padding: 5px;
+    padding: 10px;
     box-sizing: border-box;
     border-radius: 4px;
 }

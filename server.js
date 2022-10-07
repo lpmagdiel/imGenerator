@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { CreateBufferImg, CreateBufferVideo } = require('./Creator.js');
+const { CreateBufferImg, CreateBufferVideo, CreateBufferRandom } = require('./Creator.js');
 
 const path = require('path');
 const dir = path.join(__dirname, 'build');
@@ -20,8 +20,13 @@ app.get('/image/:size/:bg', (req, res) => {
 });
 
 app.get('/video/:quality', (req, res) => {
-    console.log( req.params );
     const buffer = CreateBufferVideo(req.params.quality);
+    const headers = { "Content-Type": "image/png" };
+    res.writeHead(200, headers);
+    res.end(buffer);
+});
+app.get('/random/:size', (req, res) => {
+    const buffer = CreateBufferRandom(req.params.size);
     const headers = { "Content-Type": "image/png" };
     res.writeHead(200, headers);
     res.end(buffer);

@@ -6,7 +6,7 @@ export interface VideoBoxInterface {
 	bg?: string;
 }
 
-export const VideoBox: React.FC<VideoBoxInterface> = ({ bg = '#fff' }) => {
+export const VideoBox: React.FC<VideoBoxInterface> = ({ bg = 'transparent' }) => {
 	const [url, setUrl] = useState(`${window.location.origin}/video/SD`);
 	const marks = [
 		{
@@ -46,9 +46,6 @@ export const VideoBox: React.FC<VideoBoxInterface> = ({ bg = '#fff' }) => {
 
 	return (
 		<div className="video-box" style={{ backgroundColor: bg }}>
-			<div className="video-box-row">
-				<h1>Generar con formato video</h1>
-			</div>
 			<div className="video-box-row p-20">
 				<Slider
 					aria-label="video size"
