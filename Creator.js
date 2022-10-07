@@ -1,4 +1,4 @@
-const { registerFont, createCanvas } = require("canvas");
+const { registerFont, createCanvas, loadImage } = require("canvas");
 registerFont('IBMPlexMono-Bold.ttf', { family: 'IBMPlexMono' });
 const allColors = ["#a93226", "#cb4335", " #884ea0 ", " #6c3483 ", " #2471a3 ", " #2e86c1 ", " #17a589 ", "#117a65", "#229954", "#2ecc71", "#f1c40f", "#d68910", "#ba4a00", "#b3b6b7", "#717d7e", "#34495e", "#a2d9ce", "#d98880"];
 
@@ -110,4 +110,19 @@ function CreateBufferRandom(size) {
     return CreateBufferImg(RdmSize, RdmSize, allColors[color]);
 }
 
-module.exports = { CreateBufferImg, CreateBufferVideo, CreateBufferRandom };
+/**
+ * 
+ * @returns {any}
+ */
+ async function CreateBufferAvatar() {
+    const emoji = `img/a${getRndInteger(1, 25)}.png`;
+    const width = 100;
+    const height = 100;
+    const canvas = createCanvas(width, height);
+    const ctx = canvas.getContext('2d');
+    const image = await loadImage(emoji);
+    ctx.drawImage(image, 0, 0);
+    return canvas.toBuffer("image/png");
+}
+
+module.exports = { CreateBufferImg, CreateBufferVideo, CreateBufferRandom, CreateBufferAvatar };
