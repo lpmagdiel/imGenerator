@@ -6,6 +6,7 @@ export default {
     
     <p>The image is available for download or consume directly from the url.</p>`,
     background: 'Background',
+    changeBackground: 'Change background',
     openImage: 'Open image',
     image: 'Image',
     random: 'Random',

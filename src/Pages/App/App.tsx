@@ -10,7 +10,7 @@ export const App: React.FC<AppInterface> = () => {
 
 	return (
 		<>
-			<Nav title="DummysGo">
+			<Nav title="DummyGo">
 				<a href="https://twitter.com/MagdielOmarLpez" target="_blank">
 					<img src={twitterIcon} alt="Dummys Go - twitter" />
 				</a>
@@ -18,6 +18,7 @@ export const App: React.FC<AppInterface> = () => {
 					<img src={gitHubIcon} alt="Dummys Go - github" />
 				</a>
 			</Nav>
+			<div className="space"></div>
 			<div className="h-40 d-flex justify-content-center align-items-center p-3">
 				<div dangerouslySetInnerHTML={{ __html: t("descriptionHeader") }}></div>
 			</div>

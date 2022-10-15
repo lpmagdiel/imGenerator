@@ -31,7 +31,7 @@ export const ImageBox: React.FC<ImageBoxInterface> = ({ bg = 'transparent' }) =>
 						</div>
 					</div>
 					<div className="row rounded text-center" style={{ backgroundColor: color, color: '#fff' }}>
-						<label htmlFor="color">{t('background')} {color}</label>
+						<label htmlFor="color">{t('changeBackground')} {color}</label>
 						<input type="color" id='color' value={color} onChange={e => setColor(e.target.value)} className="in text-dot" />
 					</div>
 				</div>
