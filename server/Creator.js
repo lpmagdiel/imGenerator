@@ -1,5 +1,5 @@
-const { registerFont, createCanvas, loadImage } = require("canvas");
-registerFont('IBMPlexMono-Bold.ttf', { family: 'IBMPlexMono' });
+import { registerFont, createCanvas, loadImage } from "canvas";
+registerFont('./IBMPlexMono-Bold.ttf', { family: 'IBMPlexMono' });
 const allColors = ["#a93226", "#cb4335", " #884ea0 ", " #6c3483 ", " #2471a3 ", " #2e86c1 ", " #17a589 ", "#117a65", "#229954", "#2ecc71", "#f1c40f", "#d68910", "#ba4a00", "#b3b6b7", "#717d7e", "#34495e", "#a2d9ce", "#d98880"];
 
 /**
@@ -61,7 +61,7 @@ function getSize(size) {
  * @param {string} background 
  * @returns {any}
  */
-function CreateBufferImg(width, height, background) {
+export function CreateBufferImg(width, height, background) {
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = background;
@@ -78,7 +78,7 @@ function CreateBufferImg(width, height, background) {
  * @param {string} quality 
  * @returns {any}
  */
-function CreateBufferVideo(quality) {
+export function CreateBufferVideo(quality) {
     const { width, height } = getQualityVideo(quality);
     const colors = ['#FFFFFF', '#F4F709', '#10CBF5', '#3AF708', '#E207F7', '#F70809', '#1F08F8']; // 7
     const barSize = parseInt(width / colors.length);
@@ -104,7 +104,7 @@ function CreateBufferVideo(quality) {
  * @param {string} size 
  * @returns {any}
  */
-function CreateBufferRandom(size) {
+export function CreateBufferRandom(size) {
     const RdmSize = getSize(size);
     const color = getRndInteger(0, allColors.length - 1);
     return CreateBufferImg(RdmSize, RdmSize, allColors[color]);
@@ -114,7 +114,7 @@ function CreateBufferRandom(size) {
  * 
  * @returns {any}
  */
- async function CreateBufferAvatar() {
+export async function CreateBufferAvatar() {
     const emoji = `img/a${getRndInteger(1, 25)}.png`;
     const width = 100;
     const height = 100;
@@ -124,5 +124,3 @@ function CreateBufferRandom(size) {
     ctx.drawImage(image, 0, 0);
     return canvas.toBuffer("image/png");
 }
-
-module.exports = { CreateBufferImg, CreateBufferVideo, CreateBufferRandom, CreateBufferAvatar };

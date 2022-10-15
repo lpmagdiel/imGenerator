@@ -1,5 +1,6 @@
-import { Slider } from '@mui/material';
 import React, { useState } from 'react';
+import { translate as t } from '@/translations/translate';
+import { ContentBox, Slider } from '@/Components';
 export interface RandomBoxInterface {
 	bg?: string;
 }
@@ -9,43 +10,39 @@ export const RandomBox: React.FC<RandomBoxInterface> = ({ bg = 'transparent' }) 
 	const marks = [
 		{
 			value: 1,
-			label: 'Pequeño',
+			label: 'small',
 		},
 		{
 			value: 2,
-			label: 'Mediano',
+			label: 'medium',
 		},
 		{
 			value: 3,
-			label: 'Grande',
+			label: 'large',
 		},
 	];
 
-	const handleChange = (event: Event, newValue: number | number[]) => {
+	const handleChange = (newValue: number) => {
 		const quality = newValue === 1 ? 'small' : newValue === 2 ? 'medium' : 'large';
 		setUrl(`${window.location.origin}/random/${quality}`);
 	};
 
 	return (
-		<div className="video-box" style={{ backgroundColor: bg }}>
-			<div className="video-box-row p-20 w-100">
-				<Slider
-					aria-label="image size"
-					track={false}
-					defaultValue={2}
-					step={1}
-					min={1}
-					max={3}
-					valueLabelDisplay="off"
-					marks={marks}
-					color="secondary"
-					onChange={handleChange}
-				/>
+		<ContentBox title={t("random")} color="#00796B" icon="⚡">
+			<div className="video-box" style={{ backgroundColor: bg }}>
+				<div className="video-box-row p-20 w-100">
+					<Slider
+						min={1}
+						max={3}
+						mark={marks}
+						onChange={handleChange}
+					/>
+				</div>
+				<div className="min-space"></div>
+				<div className="video-box-row">
+					<a href={url} target="_blank">{t('openImage')}</a>
+				</div>
 			</div>
-			<div className="min-space"></div>
-			<div className="video-box-row">
-				<a href={url} target="_blank">Abrir imagen</a>
-			</div>
-		</div>
+		</ContentBox>
 	);
 };

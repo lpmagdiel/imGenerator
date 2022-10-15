@@ -12,7 +12,7 @@ function App() {
     <>
       <nav>
         <h1 className="big-text">imGenerator </h1>
-        <a href="https://github.com/lpmagdiel" target="_blank">
+        <a href="https://github.com/lpmagdiel/imGenerator/" target="_blank">
           <img src={gitHubIcon} title="github.com/lpmagdiel" />
         </a>
       </nav>
@@ -51,6 +51,7 @@ function App() {
           <div className="w-100 center grid1">
             <p>Emoji aleatorio de 100<b className="orange">X</b>100 pixeles</p>
             <div className="space"></div>
+            <div className="min-space"></div>
             <div className="center">
                 <a href="/avatar" target="_blank">Abrir imagen</a>
               </div>

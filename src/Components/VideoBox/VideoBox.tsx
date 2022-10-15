@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Slider from '@mui/material/Slider';
+import { ContentBox } from '@/Components';
+import { translate as t } from '@/translations/translate';
+import { Slider } from '../Slider';
 import './style.css';
 
 export interface VideoBoxInterface {
@@ -39,31 +41,22 @@ export const VideoBox: React.FC<VideoBoxInterface> = ({ bg = 'transparent' }) =>
 		},
 	];
 
-	const handleChange = (event: Event, newValue: number | number[]) => {
+	const handleChange = (newValue: number) => {
 		const quality = marks.filter(mark => mark.value === newValue)[0];
 		setUrl(`${window.location.origin}/video/${quality.label}`);
 	};
 
 	return (
-		<div className="video-box" style={{ backgroundColor: bg }}>
-			<div className="video-box-row p-20 w-100">
-				<Slider
-					aria-label="video size"
-					track={false}
-					defaultValue={2}
-					step={1}
-					min={1}
-					max={7}
-					valueLabelDisplay="off"
-					marks={marks}
-					color="secondary"
-					onChange={handleChange}
-				/>
+		<ContentBox title="Video" icon="📺" color="#7D3C98">
+			<div className="video-box" style={{ backgroundColor: bg }}>
+				<div className="video-box-row p-20 w-100">
+					<Slider min={1} max={7} step={1} onChange={handleChange} mark={marks} />
+				</div>
+				<div className="min-space"></div>
+				<div className="video-box-row">
+					<a href={url} target="_blank">{t('openImage')}</a>
+				</div>
 			</div>
-			<div className="min-space"></div>
-			<div className="video-box-row">
-				<a href={url} target="_blank">Abrir imagen</a>
-			</div>
-		</div>
+		</ContentBox>
 	);
 }

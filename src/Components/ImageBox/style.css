@@ -14,18 +14,12 @@
     align-items: center;
     color: #000;
 }
+.image-box-row input{
+    height:45px;
+    align-items: center;
+}
 
 
 #color {
     display: none;
-}
-
-@media only screen and (max-width: 400px) {
-    .image-box-row-input-row {
-        flex-direction: column;
-        height: 150px;
-    }
-    .invisible-mobile {
-        display: none;
-    }
 }

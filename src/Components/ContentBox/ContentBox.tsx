@@ -12,10 +12,10 @@ export const ContentBox: React.FC<ContentBoxInterface> = ({ icon = '', title, co
 		<div className="content-box" style={{borderColor: color}}>
 			<div className="content-box-border-top" style={{ backgroundColor: color }}></div>
 			<div className="constent-box-icon" style={{ borderColor: color }}>
-				<h1>{icon}</h1>
+				<h2>{icon}</h2>
 			</div>
 			<div className="content-box-title">
-				<h1 className="text-dot">{title}</h1>
+				<h1>{title}</h1>
 			</div>
 			<div className="content-box-container">{children}</div>
 		</div>
