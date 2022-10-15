@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.1",
   "type": "module",
-  "main": "./server/index.js",
   "scripts": {
     "start": "node ./server/index.js",
     "dev:server": "nodemon ./server/index.js",
