@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ContentBox } from '../ContentBox';
 import { translate as t } from '@/translations/translate';
 import './style.css';
+import { InputNumber } from '../InputNumber';
 
 export interface ImageBoxInterface {
 	bg?: string;
@@ -24,10 +25,10 @@ export const ImageBox: React.FC<ImageBoxInterface> = ({ bg = 'transparent' }) =>
 					<div className="row mb-2 align-items-center">
 						<div className="col">{t('size')}: W<b>x</b>H</div>
 						<div className="col">
-							<input type="number" min="20" placeholder='Ancho' value={width} onChange={e => setWidth(Number(e.target.value))} className="form-control" />
+							<InputNumber onChange={n => setWidth(n)} defaultValue={width} min={20} />
 						</div>
 						<div className="col">
-							<input type="number" min="20" placeholder='Alto' value={height} onChange={e => setHeight(Number(e.target.value))} className="form-control" />
+							<InputNumber onChange={n => setHeight(n)} defaultValue={height} min={20} />
 						</div>
 					</div>
 					<div className="row rounded text-center" style={{ backgroundColor: color, color: '#fff' }}>
