@@ -1,4 +1,5 @@
 import { registerFont, createCanvas, loadImage } from "canvas";
+import { getRndInteger, sleep } from "./Helpers/index.js";
 registerFont('./IBMPlexMono-Bold.ttf', { family: 'IBMPlexMono' });
 const allColors = ["#a93226", "#cb4335", " #884ea0 ", " #6c3483 ", " #2471a3 ", " #2e86c1 ", " #17a589 ", "#117a65", "#229954", "#2ecc71", "#f1c40f", "#d68910", "#ba4a00", "#b3b6b7", "#717d7e", "#34495e", "#a2d9ce", "#d98880"];
 
@@ -40,10 +41,6 @@ function getQualityVideo(quality) {
             break;
     }
     return resolution;
-}
-
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function getSize(size) {
@@ -123,4 +120,14 @@ export async function CreateBufferAvatar() {
     const image = await loadImage(emoji);
     ctx.drawImage(image, 0, 0);
     return canvas.toBuffer("image/png");
+}
+
+export async function CreateUnsplashImage(id) {
+    const canvas = createCanvas(400, 300);
+    const ctx = canvas.getContext('2d');
+    //await sleep(1);
+    console.log(`tmpImages/${id}.jpg`);
+    const image = await loadImage(`tmpImages/${id}.jpg`);
+    ctx.drawImage(image,0,0);
+    return canvas.toBuffer("image/jpg");
 }
