@@ -9,7 +9,7 @@ const Nav: React.FC<NavInterface> = ({ title = '', children }) => {
 	return (
 		<nav className="navbar d-flex">
 			<div className="container-fluid">
-				<a className="navbar-brand"><h1>{title}</h1></a>
+				<a className="navbar-brand" href="https://dummygo.com/"><h1>{title}</h1></a>
 				<div className="nav-content">{children}</div>
 			</div>
 		</nav>
